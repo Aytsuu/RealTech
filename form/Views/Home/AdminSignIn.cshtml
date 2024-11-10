@@ -1,0 +1,36 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TechTrove | Sign In</title>
+    <link href="~/StyleSheet2.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery/jquery-3.7.1.js"></script>
+    <script src="~/Scripts/signInScript.js"></script>
+
+</head>
+<body>
+    <div>
+        <div class="header2">
+            <a>TechTrove</a>
+        </div>
+        <div class="signIn-main-container">
+            <div class="signIn-container">
+                <h1>SIGN IN</h1>
+                <form>
+                    <input type="text" id="adminUser" placeholder="Username" onkeyup="
+    returnBorderColor1()" required />
+                    <input type="password" id="adminPass" placeholder="Password (6-20 Characters)" onkeyup="
+    returnBorderColor1()" required />
+                </form>
+                <div class="btn"><button id="logIn">Log In</button></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

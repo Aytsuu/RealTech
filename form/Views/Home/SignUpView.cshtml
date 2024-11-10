@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RealTech | Sign Up</title>
+    <link href="~/StyleSheet1.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div>
+        <div class="header2">
+            <a href="https://localhost:44352/Home/CustomerView">RealTech</a>
+        </div>
+        <div class="main-container">
+            <div class="signUp-container">
+                <h2 id="label">Create Account</h2>
+                <div class="input-fields">
+                    <input type="text" id="username" placeholder="Username" onkeyup="validateUsername()"/>
+                    <input type="text" id="email" placeholder="Email" onkeyup="validateEmail()"/>
+                    <input type="number" min="0" id="number" placeholder="Phone Number" onkeyup="validateNumber()"/>
+                    <input type="password" id="password" placeholder="Password (6-20 Characters)" onkeyup="showConfirmation()"/>
+                    <input type="password" id="confirm-pass" placeholder="Confirm Password" onkeyup="passwordConfirmation()"/>
+                </div>
+                <button class="sign-up">Sign up</button>
+                <div class="bottom-link">
+                    <label>Aleardy have an account?</label>
+                    <a href="https://localhost:44352/Home/SignInView">Use it!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery/jquery-3.7.1.js"></script>
+    <script src="~/Scripts/signUpScript.js"></script>
+</body>
+</html>
