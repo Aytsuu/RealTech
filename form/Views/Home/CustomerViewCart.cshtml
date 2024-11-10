@@ -1,0 +1,125 @@
+﻿
+@{
+    Layout = null;
+}
+
+@using System;
+@using System.Collections.Generic;
+@using System.Linq;
+@using System.Web;
+@using System.Web.Mvc;
+@using System.Data;
+@using System.Data.SqlClient;
+@using System.IO;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TechTrove | Cart</title>
+    <link href="~/StyleSheet1.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery/jquery-3.7.1.js"></script>
+    <script src="~/Scripts/headerScript.js"></script>
+    <script src="~/Scripts/cartScript.js"></script>
+</head>
+<body>
+    <div>
+        <header id="header">
+            <a href="https://localhost:44352/Home/CustomerView" id="pagename">TechTrove</a>
+            <nav id="navbar">
+                <div id="searchBar">
+                    <input type="text" id="search" placeholder="Search products..." />
+                    <i id="searchBtn" class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <a id="navbar-a" href="https://localhost:44352/Home/CustomerView">Home</a>
+                <a id="navbar-a" href="https://localhost:44352/Home/CustomerViewProducts">Products</a>
+                <a id="cartBtn" onclick="checkLoggedIn()">
+                    <i id="cart" class="fa-solid fa-cart-shopping"></i>
+                </a>
+            </nav>
+            <div id="accountBar">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" id="username-text" value="Sign In" readonly />
+                <i class="fa-solid fa-caret-down"></i>
+            </div>
+            <div class="account-dropdown" value="0">
+                <button id="profile">Profile</button>
+                <button id="logout">Logout</button>
+            </div>
+        </header>
+
+        <!--Delete Confirmation-->
+        <div class="popup-bg">
+            <div class="del-notif">
+                <div class="d-notifIcon">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </div>
+                <h1>Do you want to delete <label id="prodName"></label>?</h1>
+                <div class="confirm">
+                    <button id="yes">Yes</button>
+                    <button id="cancelDel">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-container">
+            <div class="table-container2">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 0;"></th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total Amount</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            string username = (string)Session["username"];
+
+                            string connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\patty\source\repos\form\form\App_Data\UPDRAFT_DATABASE.mdf;Integrated Security=True";
+
+                            using (var db = new SqlConnection(connStr))
+                            {
+                                db.Open();
+
+                                using (var cmd = db.CreateCommand())
+                                {
+                                    cmd.CommandType = CommandType.Text;
+                                    cmd.CommandText = "SELECT C.PROD_ID, PROD_IMG, PROD_NAME, PROD_PRICE, QUANTITY, QUANTITY * PROD_PRICE AS AMOUNT FROM PRODUCT_ENTRY AS P,CART AS C,USER_ACCOUNTS AS U WHERE P.PROD_ID = C.PROD_ID AND C.USER_ID = U.USER_ID AND USERNAME = '" + username + "'";
+
+                                    using (var reader = cmd.ExecuteReader())
+                                    {
+                                        if (reader.HasRows)
+                                        {
+                                            while (reader.Read())
+                                            {
+                                                <tr class="items">
+                                                    <td style="font-size: 0;" class="pId"><label>@reader["prod_id"]</label></td>
+                                                    <td class="pImg">
+                                                        <img src="../Home/Image?filename=@HttpUtility.UrlEncode(reader["prod_img"] + "")" />
+                                                    </td>
+                                                    <td class="pName"><label>@reader["prod_name"]</label></td>
+                                                    <td class="pPrice">@reader["prod_price"]</td>
+                                                    <td class="pQuantity">@reader["quantity"]</td>
+                                                    <td class="pTamount">@reader["amount"]</td>
+                                                    <td class="delete"><button onclick="remove(this)"><i class="fa-solid fa-trash"></i></button></td>
+                                                </tr>
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+﻿
+@{
+    Layout = null;
+}
+
+@using System;
+@using System.Collections.Generic;
+@using System.Linq;
+@using System.Web;
+@using System.Web.Mvc;
+@using System.Data;
+@using System.Data.SqlClient;
+@using System.IO;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TechTrove | Edit Product</title>
+    <link href="~/StyleSheet2.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery/jquery-3.7.1.js"></script>
+    <script src="~/Scripts/editProductScript.js"></script>
+    <script src="~/Scripts/adminHeaderScript.js"></script>
+</head>
+<body>
+    <div>
+        <header id="header">
+            <a href="https://localhost:44352/Home/AdminProductsList" id="pagename">TechTrove</a>
+            <div id="accountBar">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" id="username-text" value="Admin" readonly />
+                <i class="fa-solid fa-caret-down"></i>
+            </div>
+            <div class="account-dropdown" value="0">
+                <button id="logout">Logout</button>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="edit-container">
+                <button class="returnList-btn"><i class="fa-solid fa-chevron-left"></i> Back To Page</button>
+                <h1>Edit Product Details</h1>
+                @{
+                    string prodid = (string)Session["productId"];
+
+                    string connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\patty\source\repos\form\form\App_Data\UPDRAFT_DATABASE.mdf;Integrated Security=True";
+
+                    using (var db = new SqlConnection(connStr)) {
+
+                        db.Open();
+
+                        using (var cmd = db.CreateCommand())
+                        {
+                            cmd.CommandType = CommandType.Text;
+                            cmd.CommandText = "SELECT * FROM PRODUCT_ENTRY WHERE PROD_ID = '" + prodid + "'";
+
+                            using (var reader = cmd.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                { 
+                                <form class="input-fields" method="post" action="../home/AdminEditProduct" enctype="multipart/form-data">
+                                    <input type="hidden" name="prod-id" value="@prodid" />
+                                    <input type="text" id="prod1" name="prod-name" value="@reader["prod_name"]" placeholder="Product Name" required />
+                                    <input type="text" id="prod1" name="prod-desc" value="@reader["prod_description"]" placeholder="Product Description" required />
+                                    <input type="number" min="0" id="prod1" name="prod-price" value="@reader["prod_price"]" placeholder="Product Price" required />
+                                    <input type="number" min="0" id="prod1" name="prod-stock" value="@reader["prod_stock"]" placeholder="Product Stock" required />
+                                    <label for="prod3">Upload Image</label>
+                                    <input type="file" id="prod3" name="img" accept="image/png, image/jpeg, image/jpg, image/bmp, image/gif" />
+                                    <input type="text" id="file-name1" name="prod-img" value="@reader["prod_img"]" readonly/>
+                                    <button id="save-prod">Save</button>
+                                </form>
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

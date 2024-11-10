@@ -1,0 +1,726 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    height: 0.7rem;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background: #797979;
+    transition: all 0.5s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #222224;
+}
+
+body {
+    min-height: 100vh;
+}
+
+/*---------- Header ----------*/
+
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background-color: #1B1B1B;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+#pagename {
+    font-size: 20px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+#accountBar {
+    background-color: #fff;
+    color: #000;
+    width: 14rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    gap: 7px;
+    cursor: pointer;
+}
+
+#accountBar input{
+    background-color: #fff;
+    width: 8rem;
+    border:none;
+    color: #000;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 15px;
+}
+
+#accountBar input:focus{
+    outline: none;
+}
+
+#accountBar button i{
+    font-size: 16px;
+    width: 20px;
+}
+
+#header img {
+    max-width: 30px;
+}
+
+#header #accountBar img {
+    max-width: 30px;
+}
+
+@media (max-width: 1550px) {
+    #header {
+        padding: 15px 50px;
+    }
+
+    #pagename {
+        font-size: 25px;
+    }
+
+    #accountBar {
+        width: 12rem;
+        height: 2.5rem;
+    }
+
+    #accountBar input {
+        width: 6rem;
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    #accountBar button i {
+        font-size: 14px;
+        width: 18px;
+    }
+}
+
+/*---------- Log out ----------*/
+
+.account-dropdown {
+    display: none;
+}
+
+.account-dropdown.active {
+    position: fixed;
+    width: 14rem;
+    height: 2.7rem;
+    box-shadow: 0 0 2px 1px rgba(0,0,0,0.3);
+    margin-top: 6.5rem;
+    background-color: #fff;
+    right: 6.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.account-dropdown button {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    padding: 0 3px 0 3px;
+    transition: all 0.3s;
+}
+
+.account-dropdown button:hover{
+    background-color: #eee;
+}
+
+@media (max-width: 1550px) {
+    .account-dropdown.active {
+        margin-top: 6rem;
+        right: 2.2rem;
+        transform: scale(85%);
+    }
+}
+
+/*---------- Signin View ----------*/
+
+.signIn-main-container{
+    max-width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.header2 a {
+    font-size: 30px;
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signIn-container {
+    padding: 10px;
+    width: 30rem;
+    height: 29rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px 0.5px rgba(0,0,0,0.5);
+}
+
+@media (max-width: 1550px) {
+    .signIn-container {
+        transform: scale(93%);
+    }
+
+    .header2 a {
+        font-size: 25px;
+    }
+}
+
+.signIn-container h1{
+    margin-top: 2.5rem;
+    color: #000;
+    text-align: center;
+    font-size: 40px;
+}
+
+.signIn-container form{
+    margin-top: 2.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.signIn-container form input{
+    width: 20rem;
+    height: 2.8rem;
+    padding: 10px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+}
+
+.signIn-container .btn{
+    margin-top: 3rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.signIn-container button {
+    width: 20rem;
+    height: 3rem;
+    background-color: #000;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/*---------- Products List ----------*/
+
+.main-container {
+    max-width: 150rem;
+    z-index: 200;
+}
+
+.addprod-btn {
+    width: 10rem;
+    height: 2.8rem;
+    border: none;
+    background-color: #1CC900;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+.addprod-btn:hover {
+    background-color: #96FE85;
+}
+
+.table-container {
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    margin-top: 10rem;
+    width: 70%;
+    table-layout: fixed;
+    box-shadow: 0 0 4px 0.3px rgba(0,0,0,0.2);
+    border-collapse: collapse;
+}
+
+thead th {
+    height: 3.5rem;
+    top: 0;
+    font-size: 17px;
+    font-weight: 600;
+    border-bottom: 1px solid #ddd;
+}
+
+th, td {
+    padding: 15px 20px 10px 0;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    color: #000;
+}
+
+td img{
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 0 3px 0.5px rgba(0,0,0,0.4);
+}
+
+td button {
+    width: 2.5rem;
+    height: 2.5rem;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    padding-top: 2px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 10px;
+    transition: all 0.4s;
+}
+
+td button:hover {
+    transform: scale(105%);
+}
+
+button i{
+    font-size: 14px;
+}
+
+td button:nth-child(1){
+    background-color: #2E5266;
+    width: 5rem;
+    font-size: 14px;
+    word-spacing: 3px;
+}
+
+
+td button:nth-child(2) {
+    background-color: #f80000;
+}
+
+@media (max-width: 1550px) {
+    table {
+        margin-top: 7.5rem;
+        width: 72%;
+    }
+
+    th, td {
+        font-size: 14px;
+    }
+
+    td button {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    button i {
+        font-size: 14px;
+    }
+
+    td button:nth-child(1) {
+        background-color: #2E5266;
+        width: 5rem;
+        font-size: 14px;
+        word-spacing: 3px;
+    }
+
+    .addprod-btn {
+        transform: scale(87%);
+    }
+}
+
+/*---------- Delete Confirmation ----------*/
+
+.popup-bg {
+    display: none;
+}
+
+.popup-bg.active {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fade-in 0.3s forwards;
+    z-index: 10;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.del-notif {
+    display: none;
+}
+
+.del-notif.active {
+    width: 25rem;
+    height: 15rem;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 7px 1px rgba(0,0,0,0.3);
+    animation: pop-in 0.3s forwards;
+}
+
+@keyframes pop-in {
+    0% {
+        transform: scale(50%);
+    }
+
+    100% {
+        transform: scale(100%);
+    }
+}
+
+.del-notif h1 {
+    font-size: 17px;
+    font-weight: 500;
+    color: #000;
+}
+
+.del-notif .d-notifIcon {
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    border: 4px solid #f80000;
+    border-radius: 50%;
+}
+
+.del-notif i {
+    font-size: 40px;
+    color: #f80000;
+}
+
+.del-notif .confirm{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.del-notif .confirm button{
+    border: none;
+    width: 5rem;
+    height: 2rem;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 5px;
+    transition: all 0.4s;
+}
+
+.del-notif .confirm button:nth-child(1) {
+    background-color: #1CC900;
+}
+
+.del-notif .confirm button:nth-child(2) {
+    background-color: #f80000;
+}
+
+#yes:hover {
+    background-color: #96FE85;
+    box-shadow: 0 0 8px 1px rgba(0,0,0,0.3);
+}
+
+#cancel:hover {
+    background-color: #FF7171;
+    box-shadow: 0 0 8px 1px rgba(0,0,0,0.3);
+}
+
+/*---------- Add Products Pop up ----------*/
+
+.transparent-bg {
+    display: none;
+}
+
+.transparent-bg.active {
+    position: fixed;
+    top: 0;
+    min-width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fade-in 0.4s forwards;
+    z-index: 10;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.add-container{
+    display: none;
+}
+
+.add-container.active {
+    width: 43rem;
+    height: 42rem;
+    background-color: #FFFFFF;
+    animation: slide-down 0.4s forwards;
+    border-radius: 10px;
+    display: unset;
+}
+
+@media (max-width: 1550px) {
+    .add-container.active {
+        transform: scale(93%);
+    }
+}
+
+@keyframes slide-down {
+    0% {
+        margin-top: 2rem;
+    }
+
+    100% {
+        margin-top: 4.5rem;
+    }
+}
+
+
+.add-container h1 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    color: #000;
+}
+
+.input-fields {
+    display: grid;
+    justify-content: center;
+    grid-gap: 1.8rem;
+}
+
+#prod1 {
+    border: none;
+    width: 33rem;
+    height: 3rem;
+    padding: 5px;
+    border-bottom: 2px solid rgba(0,0,0,0.5);
+    outline: none;
+}
+
+#prod2 {
+    display: none;
+}
+
+form label {
+    margin-top: 0.5rem;
+    width: 10rem;
+    height: 3rem;
+    background-color: #000;
+    text-align: center;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #ffffff;
+    border-radius: 5px;
+    transition: all 0.5s;
+}
+
+form label:hover{
+    background-color: #525252;
+}
+
+form span {
+    margin-top: -3.8rem;
+    margin-left: 10.5rem;
+    width: 22.6rem;
+    height: 2rem;
+    padding: 3px;
+    font-size: 14px;
+    border: none;
+    border-bottom: 2px solid #2E5266;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.back-btn {
+    margin-top: 7px;
+    margin-left: 1.5rem;
+    min-width: 5rem;
+    height: 3rem;
+    border: none;
+    background-color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    color: #000;
+    transition: all 0.5s;
+}
+
+.back-btn:hover {
+    color: #9FB1BC;
+}
+
+#save-prod {
+    height: 3rem;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    background-color: #000;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+#save-prod:hover {
+    background-color: #525252;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/*---------- Edit Products Pop up ----------*/
+
+.container {
+    position: fixed;
+    margin-top: 5.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.edit-container {
+    width: 43rem;
+    height: 42rem;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 7px 0.5px rgba(0,0,0,0.3);
+    animation: slide-in 0.6s forwards;
+    border-radius: 10px;
+    display: unset;
+}
+
+@media (max-width: 1550px) {
+    .container {
+        margin-top: 3.5rem;
+    }
+}
+
+@keyframes slide-in {
+    0% {
+        margin-top: 1.5rem;
+        opacity: 20%;
+    }
+
+    100% {
+        margin-top: 3.5rem;
+        opacity: 100%;
+    }
+}
+
+.edit-container h1 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    color: #000;
+}
+
+#prod3 {
+    display: none;
+}
+
+.returnList-btn {
+    margin-top: 7px;
+    margin-left: 1.5rem;
+    min-width: 5rem;
+    height: 3rem;
+    border: none;
+    background-color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    color: #000;
+    transition: all 0.5s;
+}
+
+.returnList-btn:hover {
+    color: #9FB1BC;
+}
+
+#file-name1 {
+    margin-top: -3.8rem;
+    margin-left: 10.5rem;
+    width: 22.6rem;
+    height: 2rem;
+    padding: 3px;
+    font-size: 14px;
+    border: none;
+    border-bottom: 2px solid #000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
